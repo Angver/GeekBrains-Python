@@ -25,7 +25,7 @@
 # Решите задачу в одну строчку используя срезы.
 def even(s):
     # +++ ваш код +++
-    return
+    return ' '.join(s.split(' ')[1::2])
 
 
 # B. Наоборот
@@ -36,7 +36,7 @@ def even(s):
 # Решите задачу в одну строчку используя срезы.
 def reverse(s):
     # +++ ваш код +++
-    return
+    return ' '.join(s.split(' ')[::-1])
 
 
 # C. Сдвиг
@@ -47,7 +47,9 @@ def reverse(s):
 # Решите задачу в две строки используя срезы.
 def shift(s):
     # +++ ваш код +++
-    return
+    s_list = s.split(' ')
+
+    return ' '.join([s_list.pop()] + s_list)
 
 
 # D. Палиндром
@@ -57,7 +59,7 @@ def shift(s):
 # Решите задачу в одну строку используя срезы.
 def palindrome(d):    
     # +++ ваш код +++
-    return
+    return str(d)[:] == str(d)[::-1]
 
 
 # E. Внутри
@@ -68,7 +70,10 @@ def palindrome(d):
 # Решите задачу в три строки используя срезы.
 def inside(s):
     # +++ ваш код +++
-    return
+    words = s.split(' ')
+    half_elements = int(len(words) / 2)
+
+    return ' '.join(words[1:half_elements] + [words[0]] + [words[-1]] + words[half_elements:-1])
 
 
 
