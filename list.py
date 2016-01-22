@@ -17,7 +17,15 @@
 # Примечание: в python нет оператора ++. Но += сработает.
 def match_ends(words):
     # +++ ваш код +++
-    return
+    s_count = 0
+    for s in words:
+        if len(s) < 2:
+            continue
+
+        if s[0] == s[-1]:
+            s_count += 1
+
+    return s_count
 
 
 # B. Начинающиеся с X в начале
@@ -29,7 +37,19 @@ def match_ends(words):
 # Подсказка: это можно сделать при помощи склеивания 2х заранее отсортированных списков
 def front_x(words):
     # +++ ваш код +++
-    return
+    x_strings = []
+    other_strings = []
+
+    for s in words:
+        if s[0] == 'x':
+            x_strings.append(s)
+        else:
+            other_strings.append(s)
+
+    x_strings.sort()
+    other_strings.sort()
+
+    return x_strings + other_strings
 
 
 # C. Сортировка по последнему числу
@@ -43,7 +63,7 @@ def front_x(words):
 
 def sort_last(lists):
     # +++ ваш код +++
-    return
+    return sorted(lists, key=lambda list: list[1])
 
 
 
@@ -54,7 +74,11 @@ def sort_last(lists):
 # Таким образом, из [1, 2, 2, 3, 4, 4] получится [1, 2, 3, 4]. 
 def remove_adjacent(nums):
     # +++ ваш код +++
-    return
+    checked = []
+    for num in nums:
+        if not len(checked) or num != checked[-1]:
+            checked.append(num)
+    return checked
 
 
 
