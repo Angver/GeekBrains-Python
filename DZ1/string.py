@@ -85,9 +85,9 @@ def not_bad(s):
     string_bad_position = s.find(string_bad)
 
     if string_not_position > 0 and string_not_position < string_bad_position:         # а что будет, если придет строка 'так уж плох этот суп'?
-        # тогда у "не" будет позиция -1 и у нас всё ломается :) apeshekhonov
+        # тогда у "не" будет позиция -1 и у нас всё ломается :). apeshekhonov
         # можно find'ы вынести в переменные, тогда финальная строка будет более читаемой
-        # вынес apeshekhonov
+        # вынес. apeshekhonov
         return s.replace(s[string_not_position:string_bad_position + len(string_bad)], string_good)
     else:
         return s
@@ -103,9 +103,9 @@ def not_bad(s):
 def front_back(a, b):       # 2016.01.22_19:41:59 checked. prusanov
     # +++ ваш код +++
     half_a = int(len(a) / 2) + len(a) % 2        # подобное уже встречалось - можно обойтись без преобразования типа
-    # Без преобразования не обойтись, т.к. иначе будет тип float, а он в индексах запрещён apeshekhonov
+    # Без преобразования не обойтись, т.к. иначе будет тип float, а он в индексах запрещён. apeshekhonov
     half_b = int(len(b) / 2) + len(b) % 2         # ну и... подумайте, как можно без ceil обойтись - уверен, придумаете ;)
-    # Убрал math.ceil apeshekhonov
+    # Убрал math.ceil. apeshekhonov
     return a[:half_a] + b[:half_b] + a[half_a:] + b[half_b:]
 
 
