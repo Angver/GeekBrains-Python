@@ -20,7 +20,7 @@ def match_ends(words):  # 2016.01.22_19:21:35 checked. prusanov
     s_count = 0
     for s in words:
         if len(s) >= 2 and s[0] == s[-1]: # Переделал на один if. apeshekhonov
-            s_count += 1
+            s_count += 1                    # 2016.01.23_13:51:15 checked. prusanov OK
 
     return s_count
 
@@ -38,8 +38,9 @@ def front_x(words):  # 2016.01.22_19:21:44 checked. prusanov
     other_strings = []
 
     for s in words:
-        if s[0] == 'x':  # а что будет, если придет строка '' ?
+        if s[0] == 'x' and s != '':  # а что будет, если придет строка '' ?
             # Ответ: строка пойдёт в массив с остальными строками. apeshekhonov
+            # # 2016.01.23_13:51:48 checked. prusanov  - проверили? :)
             strings_with_x.append(s)
         else:
             other_strings.append(s)
@@ -62,6 +63,7 @@ def front_x(words):  # 2016.01.22_19:21:44 checked. prusanov
 def sort_last(lists):  # 2016.01.22_19:33:11 checked. prusanov
     # +++ ваш код +++
     return sorted(lists, key=lambda current_list: current_list[-1])   # Переименовал переменную. apeshekhonov
+                                        # 2016.01.23_13:52:20 checked. prusanov  OK
     # Хорошо, но сортировать надо по последнему элементу
     # Сделал сортировку по последнему элементу. apeshekhonov
     # но будьте аккуратны с использованием имен вроде list, str, dict, tuple и др. - могут всплыть интересные вещи :)

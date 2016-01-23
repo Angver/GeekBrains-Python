@@ -61,6 +61,7 @@ def palindrome(d):   # 2016.01.22_19:34:35 checked. prusanov
     # +++ ваш код +++
     return str(d) == str(d)[::-1]            # для первой строки можно не указывать срез
     # Пофиксил. apeshekhonov
+    # 2016.01.23_13:53:32 checked. prusanov  - OK
 
 
 # E. Внутри
@@ -72,8 +73,9 @@ def palindrome(d):   # 2016.01.22_19:34:35 checked. prusanov
 def inside(s):          # 2016.01.22_19:35:24 checked. prusanov
     # +++ ваш код +++
     words = s.split(' ')
-    half_elements = int(len(words) / 2)     # а если без преобразования типа? :)
+    half_elements = len(words) // 2     # а если без преобразования типа? :)
     # а если не преобразовывать в int, то будет тип float, который нельзя использовать в индексах. apeshekhonov
+    # 2016.01.23_13:53:48 checked. prusanov - подсказка: есть такая арифметическая операция, которая вернет int ;)
     return ' '.join(words[1:half_elements] + [words[0]] + [words[-1]] + words[half_elements:-1])
 
 
