@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import math
 
 # Строки
 
@@ -19,7 +18,7 @@ import math
 # 'много', вместо текущего количества.
 # Таким образом, donuts(5) вернет 'Количество пончиков: 5'
 # а donuts(23) - 'Количество пончиков: много'
-def donuts(count):
+def donuts(count):      # 2016.01.22_19:37:25 checked. prusanov
     # +++ ваш код +++
     if count < 10:
         returns_count = str(count)
@@ -36,7 +35,7 @@ def donuts(count):
 # Таким образом, из строки 'spring' получится 'spng'. 
 # Однако, если длина строки меньше, чем 2 -
 # верните просто пустую строчку.
-def both_ends(s):
+def both_ends(s):       # 2016.01.22_19:37:38 checked. prusanov
     # +++ ваш код +++
     if (len(s) < 2):
         return ''
@@ -51,7 +50,7 @@ def both_ends(s):
 # Предполагается, что длина строки 1 и более.
 # Подсказка: s.replace(stra, strb) вернет версию строки, 
 # в которой все вхождения stra будут заменены на strb.
-def fix_start(s):
+def fix_start(s):           # 2016.01.22_19:37:46 checked. prusanov
     # +++ ваш код +++
     return s[0] + s[1:].replace(s[0], '*')
 
@@ -64,7 +63,7 @@ def fix_start(s):
 #   'mix', 'pod' -> 'pox mid'
 #   'dog', 'dinner' -> 'dig donner'
 # Предполагается, что строки a и b имеют длину 2 и более символов.
-def mix_up(a, b):    
+def mix_up(a, b):
     # +++ ваш код +++
     return b[:2] + a[2:] + ' ' + a[:2] + b[2:]
 
@@ -82,9 +81,14 @@ def not_bad(s):
     string_not = 'не'
     string_bad = 'плох'
     string_good = 'хорош'
+    string_not_position = s.find(string_not)
+    string_bad_position = s.find(string_bad)
 
-    if s.find(string_not) < s.find(string_bad):
-        return s.replace(s[s.find(string_not):s.find(string_bad) + len(string_bad)], string_good)
+    if string_not_position > 0 and string_not_position < string_bad_position:         # а что будет, если придет строка 'так уж плох этот суп'?
+        # тогда у "не" будет позиция -1 и у нас всё ломается :) apeshekhonov
+        # можно find'ы вынести в переменные, тогда финальная строка будет более читаемой
+        # вынес apeshekhonov
+        return s.replace(s[string_not_position:string_bad_position + len(string_bad)], string_good)
     else:
         return s
 
@@ -96,10 +100,12 @@ def not_bad(s):
 # Т.е., 'abcde', первая половина 'abc', вторая - 'de'.
 # Даны 2 строки, a и b, верните строку вида:
 # 1-половина-a + 1-половина-b + 2-половина-a + 2-половина-b
-def front_back(a, b):
+def front_back(a, b):       # 2016.01.22_19:41:59 checked. prusanov
     # +++ ваш код +++
-    half_a = int(math.ceil(len(a) / 2))
-    half_b = int(math.ceil(len(b) / 2))
+    half_a = int(len(a) / 2) + len(a) % 2        # подобное уже встречалось - можно обойтись без преобразования типа
+    # Без преобразования не обойтись, т.к. иначе будет тип float, а он в индексах запрещён apeshekhonov
+    half_b = int(len(b) / 2) + len(b) % 2         # ну и... подумайте, как можно без ceil обойтись - уверен, придумаете ;)
+    # Убрал math.ceil apeshekhonov
     return a[:half_a] + b[:half_b] + a[half_a:] + b[half_b:]
 
 
