@@ -84,10 +84,16 @@ def not_bad(s):
     string_not_position = s.find(string_not)
     string_bad_position = s.find(string_bad)
 
-    if string_not_position > 0 and string_not_position < string_bad_position:         # а что будет, если придет строка 'так уж плох этот суп'?
+    if 0 <= string_not_position < string_bad_position:         # а что будет, если придет строка 'так уж плох этот суп'?
         # тогда у "не" будет позиция -1 и у нас всё ломается :). apeshekhonov
         # можно find'ы вынести в переменные, тогда финальная строка будет более читаемой
         # вынес. apeshekhonov
+        # 2016.01.23_13:54:56 checked. prusanov - зер гут :)
+        
+        # 2016.01.23_13:55:31 checked. prusanov - Ваше сравнение для Pythona можно записать и вот так:
+            # if 0 < string_not_position < string_bad_position:
+            # написал и понял, что есть еще одна неточность ;)
+            # что будет, если придет строка 'не так уж плох этот ужин'  ?
         return s.replace(s[string_not_position:string_bad_position + len(string_bad)], string_good)
     else:
         return s
@@ -102,10 +108,11 @@ def not_bad(s):
 # 1-половина-a + 1-половина-b + 2-половина-a + 2-половина-b
 def front_back(a, b):       # 2016.01.22_19:41:59 checked. prusanov
     # +++ ваш код +++
-    half_a = int(len(a) / 2) + len(a) % 2        # подобное уже встречалось - можно обойтись без преобразования типа
+    half_a = len(a) // 2 + len(a) % 2        # подобное уже встречалось - можно обойтись без преобразования типа
     # Без преобразования не обойтись, т.к. иначе будет тип float, а он в индексах запрещён. apeshekhonov
-    half_b = int(len(b) / 2) + len(b) % 2         # ну и... подумайте, как можно без ceil обойтись - уверен, придумаете ;)
+    half_b = len(b) // 2 + len(b) % 2         # ну и... подумайте, как можно без ceil обойтись - уверен, придумаете ;)
     # Убрал math.ceil. apeshekhonov
+    # 2016.01.23_13:57:47 checked. prusanov - пробуем, все же, без преобразования ;)
     return a[:half_a] + b[:half_b] + a[half_a:] + b[half_b:]
 
 
