@@ -43,6 +43,42 @@ import sys
 # строит по нему словарь слово/количество и возвращает этот словарь.
 # Затем print_words() и print_top() смогут просто вызывать эту вспомогательную функцию.
 
+def print_words(filename):
+    get_dictionary(filename)
+    return
+
+def print_top(filename):
+    return
+
+def get_dictionary(filename):
+    f = open(filename, encoding='utf-8')
+    text = f.read()
+    words = text.split()
+    dictionary = {}
+    for word in words:
+        word = word.strip('!"$%&\'()*+,-./::<=>?@[\\]^_{|}~` ')
+        if word == '':
+            continue
+
+        if word.lower() in dictionary:
+            dictionary[word.lower()] += 1
+        else:
+            dictionary[word.lower()] = 1
+
+    dictionary = sort_dict(dictionary)
+
+    return dictionary
+
+def sort_dict(dictionary):
+    k = dict.keys(dictionary)
+    k = sorted(k)
+
+    new_dictionary = {}
+    for key in k:
+        new_dictionary[key] = dictionary.pop(key)
+
+    return new_dictionary
+
 ###
 
 # Это базовый код для разбора аргументов коммандной строки.
