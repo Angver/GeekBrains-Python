@@ -44,8 +44,10 @@ import sys
 # Затем print_words() и print_top() смогут просто вызывать эту вспомогательную функцию.
 
 def print_words(filename):
-    get_dictionary(filename)
-    return
+    dictionary = get_dictionary(filename)
+    dictionary = sort_dict_by_keys(dictionary)
+
+    return dictionary
 
 def print_top(filename):
     return
@@ -65,11 +67,9 @@ def get_dictionary(filename):
         else:
             dictionary[word.lower()] = 1
 
-    dictionary = sort_dict(dictionary)
-
     return dictionary
 
-def sort_dict(dictionary):
+def sort_dict_by_keys(dictionary):
     k = dict.keys(dictionary)
     k = sorted(k)
 
