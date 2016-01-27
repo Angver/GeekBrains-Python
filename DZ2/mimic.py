@@ -52,10 +52,26 @@ def mimic_dict(filename):
     return d
 
 
-def print_mimic(mimic_dict, word):
+def print_mimic(mdict, word):
     """Принимает в качестве аргументов имитационный словарь и начальное слово,
     выводит 200 случайных слов."""
     # +++ваш код+++
+
+    count_max = 200
+    count = 0
+    result_string = ''
+    current_word = word
+    while count < count_max:
+        if not current_word in mdict:
+            current_word = random.choice(list(mdict.keys()))
+
+        count += 1
+        new_word = random.choice(mdict[current_word])
+        result_string += current_word + ' ' + new_word + ' '
+        current_word = new_word
+
+    print(result_string[:-1])
+
     return
 
 
