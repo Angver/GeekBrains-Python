@@ -62,7 +62,7 @@ def print_mimic(mdict, word):
     result_string = ''
     current_word = word
     while count < count_max:
-        if not current_word in mdict:
+        if current_word not in mdict:
             current_word = random.choice(list(mdict.keys()))
 
         count += 1

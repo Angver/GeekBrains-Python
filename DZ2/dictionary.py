@@ -1,7 +1,8 @@
 import string
 
-author = 'Alexey Peshekhonov'
-version = '0.1'
+__author__ = 'Alexey Peshekhonov'
+__version__ = '0.2'
+
 
 def get_words_for_dictionary(filename):
     f = open(filename, encoding='utf-8')
@@ -9,6 +10,7 @@ def get_words_for_dictionary(filename):
     words = text.split()
 
     return words
+
 
 def get_dictionary(filename):
     """
