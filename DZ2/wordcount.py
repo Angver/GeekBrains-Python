@@ -36,6 +36,8 @@ print_words(filename), которая подсчитывает, как част�
 """
 
 import sys
+from dictionary import *
+
 
 # +++ваш код+++
 # Определите и заполните функции print_words(filename) и print_top(filename).
@@ -47,37 +49,13 @@ def print_words(filename):
     dictionary = get_dictionary(filename)
     dictionary = sort_dict_by_keys(dictionary)
 
-    return dictionary
+    for key in dictionary:
+        print(key, dictionary[key])
+
+    return ()
 
 def print_top(filename):
     return
-
-def get_dictionary(filename):
-    f = open(filename, encoding='utf-8')
-    text = f.read()
-    words = text.split()
-    dictionary = {}
-    for word in words:
-        word = word.strip('!"$%&\'()*+,-./::<=>?@[\\]^_{|}~` ')
-        if word == '':
-            continue
-
-        if word.lower() in dictionary:
-            dictionary[word.lower()] += 1
-        else:
-            dictionary[word.lower()] = 1
-
-    return dictionary
-
-def sort_dict_by_keys(dictionary):
-    k = dict.keys(dictionary)
-    k = sorted(k)
-
-    new_dictionary = {}
-    for key in k:
-        new_dictionary[key] = dictionary.pop(key)
-
-    return new_dictionary
 
 ###
 
