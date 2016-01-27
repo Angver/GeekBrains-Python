@@ -32,13 +32,24 @@ random.choice(list), который выбирает случайный элем
 
 import random
 import sys
+from dictionary import *
 
 
 def mimic_dict(filename):
     """Возвращает имитационный словарь, сопоставляющий каждое слово 
     со списом слов, которые непосредственно следуют за ним в тексте"""
     # +++ваш код+++
-    return
+    words = get_words_for_dictionary(filename)
+
+    d = {}
+    for i, word in enumerate(words):
+        item = d[word] if word in d else []
+        if i+1 < len(words):
+            item.append(words[i+1])
+
+        d[word] = item
+
+    return d
 
 
 def print_mimic(mimic_dict, word):

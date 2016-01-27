@@ -3,6 +3,13 @@ import string
 author = 'Alexey Peshekhonov'
 version = '0.1'
 
+def get_words_for_dictionary(filename):
+    f = open(filename, encoding='utf-8')
+    text = f.read()
+    words = text.split()
+
+    return words
+
 def get_dictionary(filename):
     """
     Возвращает словарь, считанный из файла
@@ -11,9 +18,8 @@ def get_dictionary(filename):
     :return: dict Возвращает словарь
     """
 
-    f = open(filename, encoding='utf-8')
-    text = f.read()
-    words = text.split()
+    words = get_words_for_dictionary(filename)
+
     dictionary = {}
     strip = string.whitespace + string.punctuation + string.digits + "\"'"
     for word in words:
