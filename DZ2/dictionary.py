@@ -1,3 +1,5 @@
+import string
+
 author = 'Alexey Peshekhonov'
 version = '0.1'
 
@@ -13,8 +15,9 @@ def get_dictionary(filename):
     text = f.read()
     words = text.split()
     dictionary = {}
+    strip = string.whitespace + string.punctuation + string.digits + "\"'"
     for word in words:
-        word = word.strip('!"$%&\'()*+,-./::<=>?@[\\]^_{|}~` ')
+        word = word.strip(strip)
         if word == '':
             continue
 
@@ -24,20 +27,3 @@ def get_dictionary(filename):
             dictionary[word.lower()] = 1
 
     return dictionary
-
-def sort_dict_by_keys(dictionary):
-    """
-    Сортировка словаря по ключам
-
-    :param dictionary: dict Несортированный словарь
-    :return: dict Отсортированный словарь
-    """
-
-    k = dict.keys(dictionary)
-    k = sorted(k)
-
-    new_dictionary = {}
-    for key in k:
-        new_dictionary[key] = dictionary.pop(key)
-
-    return new_dictionary

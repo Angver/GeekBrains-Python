@@ -47,15 +47,23 @@ from dictionary import *
 
 def print_words(filename):
     dictionary = get_dictionary(filename)
-    dictionary = sort_dict_by_keys(dictionary)
+    dictionary = sorted(dictionary.items(), key=lambda row: row[0])
 
     for key in dictionary:
         print(key, dictionary[key])
 
     return ()
 
+
 def print_top(filename):
+    dictionary = get_dictionary(filename)
+    dictionary = sorted(dictionary.items(), key=lambda row: row[1], reverse=True)
+
+    for key in dictionary[:20]:
+        print(key[0], key[1])
+
     return
+
 
 ###
 
@@ -75,6 +83,7 @@ def main():
     else:
         print('unknown option: ' + option)
     sys.exit(1)
+
 
 if __name__ == '__main__':
     main()
